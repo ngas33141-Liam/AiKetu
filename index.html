@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AiKipa Shop Pro</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#000;
+color:white;
+overflow-x:hidden;
+}
+
+/* Splash */
+
+#splash{
+position:fixed;
+inset:0;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:1000;
+}
+
+.logo{
+width:140px;
+height:140px;
+border-radius:50%;
+border:3px solid cyan;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:32px;
+font-weight:bold;
+color:cyan;
+box-shadow:0 0 30px cyan;
+animation:glow 1.5s infinite alternate;
+}
+
+@keyframes glow{
+from{
+box-shadow:0 0 20px cyan;
+}
+to{
+box-shadow:0 0 40px cyan;
+}
+}
+
+.loading{
+margin-top:20px;
+color:#aaa;
+}
+
+/* Pages */
+
+.page{
+display:none;
+padding:20px;
+padding-bottom:100px;
+}
+
+.active{
+display:block;
+}
+
+/* Card */
+
+.card{
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(15px);
+border:1px solid rgba(0,255,255,.2);
+border-radius:25px;
+padding:18px;
+margin-top:15px;
+}
+
+h1{
+color:cyan;
+text-align:center;
+margin-bottom:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.menuCard{
+background:#111;
+border:1px solid rgba(0,255,255,.2);
+border-radius:25px;
+padding:25px 10px;
+text-align:center;
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:50px;
+background:cyan;
+color:black;
+font-weight:bold;
+margin-top:10px;
+}
+
+.search{
+width:100%;
+padding:15px;
+background:#111;
+border:none;
+outline:none;
+color:white;
+border-radius:20px;
+}
+
+/* Bottom */
+
+.bottom{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#111;
+display:flex;
+justify-content:space-around;
+padding:15px;
+border-top:1px solid cyan;
+}
+
+.navBtn{
+background:none;
+color:cyan;
+font-size:14px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Splash -->
+
+<div id="splash">
+
+<div class="logo">
+AiKipa
+</div>
+
+<div class="loading">
+Loading...
+</div>
+
+</div>
+
+<!-- Home -->
+
+<div class="page active" id="home">
+
+<div class="logo" style="margin:auto;">
+AiKipa
+</div>
+
+<h1>
+Premium Gift Plan<br>
+NFT Stars Shop
+</h1>
+
+<div class="card">
+
+<p align="center">
+Buy Telegram Stars, Premium and NFT
+</p>
+
+<button onclick="openShop()">
+Start
+</button>
+
+</div>
+
+</div>
+
+<!-- Shop -->
+
+<div class="page" id="shop">
+
+<h1>
+🛒 Shop
+</h1>
+
+<input class="search"
+placeholder="Search products...">
+
+<div class="grid">
+
+<div class="menuCard">
+⭐
+<br><br>
+Stars
+<button>
+Open
+</button>
+</div>
+
+<div class="menuCard">
+👑
+<br><br>
+Premium
+<button>
+Open
+</button>
+</div>
+
+<div class="menuCard">
+🖼
+<br><br>
+NFT
+<button>
+Open
+</button>
+</div>
+
+<div class="menuCard">
+📞
+<br><br>
+Contact
+<button onclick="window.open('https://t.me/AiKipa')">
+Open
+</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- Profile -->
+
+<div class="page" id="profile">
+
+<h1>
+👤 Profile
+</h1>
+
+<div class="card">
+Username
+<br>
+@username
+</div>
+
+<div class="card">
+Status
+<br>
+Premium Member
+</div>
+
+</div>
+
+<!-- Orders -->
+
+<div class="page" id="orders">
+
+<h1>
+📜 Order History
+</h1>
+
+<div class="card">
+No orders yet
+</div>
+
+</div>
+
+<!-- Bottom -->
+
+<div class="bottom">
+
+<button class="navBtn"
+onclick="showPage('home')">
+🏠
+<br>
+Home
+</button>
+
+<button class="navBtn"
+onclick="showPage('shop')">
+🛒
+<br>
+Shop
+</button>
+
+<button class="navBtn"
+onclick="showPage('orders')">
+📜
+<br>
+Orders
+</button>
+
+<button class="navBtn"
+onclick="showPage('profile')">
+👤
+<br>
+Profile
+</button>
+
+</div>
+
+<script>
+
+setTimeout(()=>{
+document.getElementById("splash").style.display="none";
+},2000);
+
+function showPage(page){
+
+document.querySelectorAll(".page").forEach(p=>{
+p.classList.remove("active");
+});
+
+document.getElementById(page).classList.add("active");
+
+}
+
+function openShop(){
+showPage("shop");
+}
+
+</script>
+
+</body>
+</html>
